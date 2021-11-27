@@ -1,0 +1,12 @@
+body{
+    background-color: rgb(160, 134, 184);
+}
+
+.weather-value-selector{
+    background-color: rgb(55, 55, 56);
+    height: 300px;
+    width: 400px;
+    color: azure;
+    border-radius: 10px;
+    font-family: 'Courier New', monospace;
+}

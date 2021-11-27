@@ -1,10 +1,36 @@
 <html>
     <head>
-
+        <link rel="stylesheet" href="weather_style.css">
     </head>
 
     <body>
         
+        <div class="weather-screen">
+            
+            <div class="weather-display-card">
+
+            </div>
+
+            <div class="weather-value-selector">
+                <div class = "weather-reading">
+                    <div id = "precipitation" style="padding: 5px;"><span style="float: left;">Precipitation</span>     <span style="float: right;">0 %</span></div><br>
+                    <div id = "humidity" style="padding: 5px;"><span style="float: left;">Humidity</span>   <span style="float: right;">34 %</span></div><br>
+                    <div id = "wind" style="padding : 5px;"><span style="float: left;">Wind</span>   <span style="float: right;">0 km/h</span></div><br>
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <form autocomplete="off" style="padding: 5px;">
+
+                     <label for="city-name">Change Location</label>
+                     <input type="search" name="city-name" id="city-name" style="float: right;">
+
+                </form>
+            </div>
+
+
+        </div>
         
     </body>
 </html>
