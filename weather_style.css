@@ -1,12 +1,46 @@
 body{
-    background-color: rgb(160, 134, 184);
+    background-color: rgb(131, 86, 173);
+}
+
+.weather-reading > div{
+    padding: 5px
+}
+
+.weather-screen{
+    display: flex;
+    justify-content: center;
+    padding: 150px;
+}
+
+.weather-display-card{
+    height: 350px;
+    width: 390px;
+    border-style: solid;
+    border-radius: 15px;
+    transform: skewY(175deg);
+    background-image: url(./images/sunny.jpeg);
+    opacity: 0.55;
+    background-size:  400px 350px;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-left: 10px;
+    font-family: 'Courier New', monospace;
+    font-size: x-large;
+    
+    
 }
 
 .weather-value-selector{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     background-color: rgb(55, 55, 56);
     height: 300px;
     width: 400px;
     color: azure;
     border-radius: 10px;
     font-family: 'Courier New', monospace;
+    padding: 5px;
 }

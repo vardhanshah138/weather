@@ -8,20 +8,31 @@
         <div class="weather-screen">
             
             <div class="weather-display-card">
+                
+                <div class="location-display">
+                   <div id="day-display">Tuesday</div>
+                   <div id="date-display">15 Jan,2019</div>
+                   <div id="location-display" style="padding-top: 5px;">Paris</div>
+                </div>
+
+                
+
+                <div class="weather-display">
+                    <div id="weather-icon"></div>
+                    <div id="weather-temperature">29 C</div>
+                    <div id="weather-type">Sunny</div>
+                </div>
 
             </div>
 
             <div class="weather-value-selector">
-                <div class = "weather-reading">
-                    <div id = "precipitation" style="padding: 5px;"><span style="float: left;">Precipitation</span>     <span style="float: right;">0 %</span></div><br>
-                    <div id = "humidity" style="padding: 5px;"><span style="float: left;">Humidity</span>   <span style="float: right;">34 %</span></div><br>
-                    <div id = "wind" style="padding : 5px;"><span style="float: left;">Wind</span>   <span style="float: right;">0 km/h</span></div><br>
+                <div class="weather-reading">
+                    <div id = "precipitation" ><span style="float: left;">Precipitation</span>     <span style="float: right;">0 %</span></div><br>
+                    <div id = "humidity" ><span style="float: left;">Humidity</span>   <span style="float: right;">34 %</span></div><br>
+                    <div id = "wind" ><span style="float: left;">Wind</span>   <span style="float: right;">0 km/h</span></div><br>
                 </div>
                 <br>
-                <br>
-                <br>
-                <br>
-                <form autocomplete="off" style="padding: 5px;">
+                <form autocomplete="off" >
 
                      <label for="city-name">Change Location</label>
                      <input type="search" name="city-name" id="city-name" style="float: right;">
