@@ -35,7 +35,7 @@ body{
 .weather-value-selector{
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
     background-color: rgb(55, 55, 56);
     height: 300px;
     width: 400px;

@@ -35,13 +35,18 @@
                 <form autocomplete="off" >
 
                      <label for="city-name">Change Location</label>
-                     <input type="search" name="city-name" id="city-name" style="float: right;">
-
+                     <input list="city" name="city-name" id="city-name" style="float: right;">
+                    <datalist id="city">
+                        <option >Surat</option>
+                        <option >Ahmedabad</option>
+                        <option >Rajkot</option>
+                        <option >Jamnagar</option>
+                    </datalist>
                 </form>
             </div>
 
 
         </div>
-        
+        <script src="./weather_script.js"></script>
     </body>
 </html>
