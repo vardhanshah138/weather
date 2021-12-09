@@ -22,19 +22,39 @@ function coordinate_success(position){
 
 async function get_weather_by_coordinates(lat,lon){
     let url = apiurl+"?lat="+lat+"&lon="+lon+"&appid="+apiKey;
-    console.log(url);
+    //console.log(url);
     let response = await fetch(url);
     let json =  await response.json();
     console.log(json);
 }
 
-fetch("./current.city.list.json")
-.then(response => {
-    return response.json();
-})
-.then(data => {
-    console.log(data)
-})
+async function load_json(str1){
+    let promise = await fetch(str1);
+    let response =  promise.json();
+    return response;
+}
+
+async function populate_cityDropdown(){
+    console.log("here");
+    let data = await load_json("./current.city.list.json");
+    let dropdown_element = document.getElementById("city-drop");
+
+
+
+    for (let i = 0; i < data.length; i++) {
+        let element = data[i]["name"];
+        let option = document.createElement('option');
+        option.innerHTML = element;
+        console.log(option)
+        dropdown_element.appendChild(option);
+    }
+
+}
+
+populate_cityDropdown();
+
+
+
 
 //navigator.geolocation.getCurrentPosition(coordinate_success);
 //get_weather_by_coordinates(21.170240,72.831062);
