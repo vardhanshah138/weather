@@ -3,7 +3,6 @@ let date = document.getElementById("date-display");
 let loc = document.getElementById("location-display");
 let apiurl = "https://api.openweathermap.org/data/2.5/weather";
 let apiKey = "8c5fb5f3eb2951506bf866a3f972385b";
-
 day.innerHTML = "Friday";
 console.log(day.innerHTML);
 
