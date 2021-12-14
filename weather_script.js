@@ -14,9 +14,7 @@ const values = {
     bgimage : document.getElementById("weather-display-card"),
 }
 
-
 function coordinate_success(position){
-
     var coordinate = position.coords;
     var latitude = coordinate.latitude;
     var longitude = coordinate.longitude;
@@ -46,9 +44,31 @@ function display_values(json){
     values.wind.textContent = json["wind"]["speed"] + " km/h";
     values.icon.src = `./images/${json["weather"][0]["icon"]}.png`;
     values.bgimage.style.backgroundImage = `url(./images/${json["weather"][0]["icon"]}.jpeg)`;
+}
+
+async function populate_cityDropdown(){
+    
+    let data = await load_json("./current.city.list.json");
+    let dropdown_element = document.getElementById("city-drop");
+
+    for (let i = 0; i < data.length; i++) {
+        let element = data[i]["name"];
+        let option = document.createElement('option');
+        option.innerHTML = element;
+        dropdown_element.appendChild(option);
+    }
 
 }
 
+async function get_city(){
+    var selected_city = document.getElementById("city-name").value;
+    let url = apiurl+"?q="+selected_city+"&appid="+apiKey;
+    let data = await load_json(url);
+    display_values(data);
+
+}
+
+populate_cityDropdown();
 
 
 navigator.geolocation.getCurrentPosition(coordinate_success);

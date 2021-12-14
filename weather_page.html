@@ -34,17 +34,9 @@
                 <br>
                 <form autocomplete="off" >
 
-                     <label for="city-name">Change Location</label>
-                     <input list="city" name="city-name" id="city-name" style="float: right;">
-                    <datalist id="city">
-                        <option >Surat</option>
-                        <option >Ahmedabad</option>
-                        <option >Rajkot</option>
-                        <option >Jamnagar</option>
-                        <option >London</option>
-                        <option >Newyork</option>
-                        <option >Kerala</option>
-                        <option >Banglore</option>
+                    <label for="city-name">Change Location</label>
+                    <input list="city-drop" name="city-name" id="city-name" style="float: right;" onchange="get_city()">
+                    <datalist id="city-drop">
                     </datalist>
                 </form>
             </div>
