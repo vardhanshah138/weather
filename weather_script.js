@@ -22,7 +22,10 @@ async function populate_cityDropdown(){
 
 }
 
-
+function get_city(){
+    var div = document.getElementById("city-name");
+    console.log(div.value);
+}
 
 populate_cityDropdown();
 
