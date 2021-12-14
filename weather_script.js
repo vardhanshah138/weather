@@ -9,8 +9,11 @@ const values = {
     precipitation : document.getElementById("prec-value"),
     humidity : document.getElementById("humid-value"),
     wind : document.getElementById("wind-value"),
-    desc : document.getElementById("weather-type")
+    desc : document.getElementById("weather-type"),
+    icon : document.getElementById("weather-icon"),
+    bgimage : document.getElementById("weather-display-card"),
 }
+
 
 function coordinate_success(position){
 
@@ -24,7 +27,6 @@ function coordinate_success(position){
 async function get_weather_by_coordinates(lat,lon,jsoncallback){
     let url = apiurl+"?lat="+lat+"&lon="+lon+"&appid="+apiKey;
     json = await load_json(url);
-    //console.log(json);
     jsoncallback(json);
 }
 
@@ -37,13 +39,17 @@ async function load_json(str1){
 function display_values(json){
     console.log(json);
     values.city.innerHTML = json["name"];
-    values.temprature.innerHTML = json["main"]["temp"] + " C";
+    values.temprature.innerHTML = Math.round(json["main"]["temp"] - 273.15) + " \xB0" + " C";
     values.desc.innerHTML = json["weather"][0]["main"];
     values.precipitation.innerHTML = json["clouds"]["all"] +" %";
     values.humidity.innerHTML = json["main"]["humidity"] + " %";
     values.wind.textContent = json["wind"]["speed"] + " km/h";
-    //values.date.innerHTML = (new Date()).toString();
+    values.icon.src = `./images/${json["weather"][0]["icon"]}.png`;
+    values.bgimage.style.backgroundImage = `url(./images/${json["weather"][0]["icon"]}.jpeg)`;
+
 }
+
+
 
 navigator.geolocation.getCurrentPosition(coordinate_success);
 //get_weather_by_coordinates(21.170240,72.831062,display_values);
