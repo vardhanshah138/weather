@@ -19,7 +19,7 @@ body{
     border-radius: 15px;
     transform: skewY(175deg);
     background-image: url(./images/50d.jpeg);
-    opacity: 0.55;
+    opacity: 0.35;
     background-size:  400px 350px;
     background-repeat: no-repeat;
     display: flex;

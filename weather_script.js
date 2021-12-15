@@ -1,6 +1,6 @@
 let apiurl = "https://api.openweathermap.org/data/2.5/weather";
 let apiKey = "8c5fb5f3eb2951506bf866a3f972385b";
-
+var week = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
 const values = {
     day : document.getElementById("day-display"),
     date: document.getElementById("date-display"),
@@ -36,6 +36,7 @@ async function load_json(str1){
 
 function display_values(json){
     console.log(json);
+    const date = timezone_conversion(json["timezone"]);
     values.city.innerHTML = json["name"];
     values.temprature.innerHTML = Math.round(json["main"]["temp"] - 273.15) + " \xB0" + " C";
     values.desc.innerHTML = json["weather"][0]["main"];
@@ -44,6 +45,8 @@ function display_values(json){
     values.wind.textContent = json["wind"]["speed"] + " km/h";
     values.icon.src = `./images/${json["weather"][0]["icon"]}.png`;
     values.bgimage.style.backgroundImage = `url(./images/${json["weather"][0]["icon"]}.jpeg)`;
+    values.day.innerHTML = week[date.getDay()-1];
+    values.date.innerHTML = date.toLocaleString();
 }
 
 async function populate_cityDropdown(){
@@ -68,8 +71,12 @@ async function get_city(){
 
 }
 
+function timezone_conversion(offset){
+    let date = new Date();
+    let mydate = new Date(date.getUTCFullYear(),date.getUTCMonth(),date.getUTCDate(),date.getUTCHours(),date.getUTCMinutes(),date.getUTCSeconds(),date.getUTCMilliseconds());
+    let upd_date = new Date(mydate.getTime()+offset*1000);
+    return upd_date;
+}
+
 populate_cityDropdown();
-
-
 navigator.geolocation.getCurrentPosition(coordinate_success);
-//get_weather_by_coordinates(21.170240,72.831062,display_values);
