@@ -34,6 +34,21 @@ async function load_json(str1){
     return response;
 }
 
+async function my_load_json(str){
+    let data =  await fetch(str).then((response) => {                
+        
+        if(!response.ok){
+            throw "Please input correct city.";
+        }
+        
+        return response.json();
+        })
+
+        .then((data)=>{return data;})
+        .catch((err) => alert(err));            
+        return data;
+}
+
 function display_values(json){
     console.log(json);
     const date = timezone_conversion(json["timezone"]);
@@ -51,7 +66,7 @@ function display_values(json){
 
 async function populate_cityDropdown(){
     
-    let data = await load_json("./current.city.list.json");
+    let data = await my_load_json("./current.city.list.json");
     let dropdown_element = document.getElementById("city-drop");
 
     for (let i = 0; i < data.length; i++) {
@@ -66,10 +81,13 @@ async function populate_cityDropdown(){
 async function get_city(){
     var selected_city = document.getElementById("city-name").value;
     let url = apiurl+"?q="+selected_city+"&appid="+apiKey;
-    let data = await load_json(url);
-    display_values(data);
-
+    let data = await my_load_json(url);
+    
+    if(typeof data !== "undefined"){
+        display_values(data);
+    }
 }
+
 
 function timezone_conversion(offset){
     let date = new Date();
@@ -77,6 +95,8 @@ function timezone_conversion(offset){
     let upd_date = new Date(mydate.getTime()+offset*1000);
     return upd_date;
 }
+
+
 
 populate_cityDropdown();
 navigator.geolocation.getCurrentPosition(coordinate_success);
